@@ -3,8 +3,8 @@ package ru.job4j.accidents.controller;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.service.AccidentService;
 
 @Controller
@@ -20,5 +20,22 @@ public class AccidentController {
     public String getAll(Model model) {
         model.addAttribute("accidents", accidentService.findAll());
         return "accidents/list";
+    }
+
+    /**
+     * Страница создания инцидента
+     */
+    @GetMapping("/create")
+    public String getCreationPage() {
+        return "accidents/create";
+    }
+
+    /**
+     * Отправка формы создания инцидента
+     */
+    @PostMapping("/create")
+    public String create(@ModelAttribute Accident accident) {
+        accidentService.save(accident);
+        return "redirect:/accidents";
     }
 }
