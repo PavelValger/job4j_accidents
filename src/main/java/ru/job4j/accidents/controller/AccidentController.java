@@ -38,4 +38,27 @@ public class AccidentController {
         accidentService.save(accident);
         return "redirect:/accidents";
     }
+
+    /**
+     * Страница редактирования инцидента
+     */
+    @GetMapping("/formUpdateAccident")
+    public String getById(@RequestParam("id") int id, Model model) {
+        var accidentOptional = accidentService.findById(id);
+        if (accidentOptional.isEmpty()) {
+            model.addAttribute("message", "Инцидент с указанным идентификатором не найден");
+            return "errors/404";
+        }
+        model.addAttribute("accident", accidentOptional.get());
+        return "accidents/edit";
+    }
+
+    /**
+     * Отправка формы редактирования инцидента
+     */
+    @PostMapping("/update")
+    public String update(@ModelAttribute Accident accident) {
+        accidentService.update(accident);
+        return "redirect:/accidents";
+    }
 }
