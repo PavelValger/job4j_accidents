@@ -57,8 +57,12 @@ public class AccidentController {
      * Отправка формы редактирования инцидента
      */
     @PostMapping("/update")
-    public String update(@ModelAttribute Accident accident) {
-        accidentService.update(accident);
+    public String update(@ModelAttribute Accident accident, Model model) {
+        var isUpdated = accidentService.update(accident);
+        if (!isUpdated) {
+            model.addAttribute("message", "Инцидент с указанным идентификатором не найден");
+            return "errors/404";
+        }
         return "redirect:/accidents";
     }
 }

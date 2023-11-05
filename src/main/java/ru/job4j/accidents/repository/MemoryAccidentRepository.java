@@ -37,8 +37,9 @@ public class MemoryAccidentRepository implements AccidentRepository {
     }
 
     @Override
-    public void update(Accident accident) {
-        accidents.computeIfPresent(accident.getId(), (id, oldAccident)
-                -> new Accident(oldAccident.getId(), accident.getName(), accident.getText(), accident.getAddress()));
+    public boolean update(Accident accident) {
+        return accidents.computeIfPresent(accident.getId(), (id, oldAccident)
+                -> new Accident(oldAccident.getId(), accident.getName(),
+                accident.getText(), accident.getAddress())) != null;
     }
 }

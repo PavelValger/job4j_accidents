@@ -13,5 +13,5 @@ public interface AccidentService {
 
     Optional<Accident> findById(int id);
 
-    void update(Accident accident);
+    boolean update(Accident accident);
 }

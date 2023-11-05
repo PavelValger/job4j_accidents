@@ -29,7 +29,7 @@ public class SimpleAccidentService implements AccidentService {
     }
 
     @Override
-    public void update(Accident accident) {
-        accidentRepository.update(accident);
+    public boolean update(Accident accident) {
+        return accidentRepository.update(accident);
     }
 }
