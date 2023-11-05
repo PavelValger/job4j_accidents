@@ -6,12 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.service.AccidentService;
+import ru.job4j.accidents.service.AccidentTypeService;
 
 @Controller
 @AllArgsConstructor
 @RequestMapping("/accidents")
 public class AccidentController {
     private final AccidentService accidentService;
+    private final AccidentTypeService accidentTypeService;
 
     /**
      * Вывести все нарушения
@@ -26,7 +28,8 @@ public class AccidentController {
      * Страница создания инцидента
      */
     @GetMapping("/create")
-    public String getCreationPage() {
+    public String getCreationPage(Model model) {
+        model.addAttribute("types", accidentTypeService.findAll());
         return "accidents/create";
     }
 
@@ -50,6 +53,7 @@ public class AccidentController {
             return "errors/404";
         }
         model.addAttribute("accident", accidentOptional.get());
+        model.addAttribute("types", accidentTypeService.findAll());
         return "accidents/edit";
     }
 

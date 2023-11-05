@@ -17,4 +17,5 @@ public class Accident {
     private String text;
     @Include
     private String address;
+    private AccidentType type;
 }
