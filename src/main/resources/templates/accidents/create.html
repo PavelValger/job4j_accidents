@@ -20,29 +20,43 @@
             <div class="mb-3">
                 <label for="name" class="form-label"><b>Название инцидента</b></label>
                 <input type="text" class="form-control" id="name" name="name"
-                       placeholder="Превышение скорости">
+                       placeholder="Превышение скорости" required>
             </div>
             <div class="mb-3">
                 <label for="text" class="form-label"><b>Описание</b></label>
                 <textarea class="form-control" id="text" rows="5" name="text"
-                          placeholder="Опишите происшествие"></textarea>
+                          placeholder="Опишите происшествие" required></textarea>
             </div>
             <div class="mb-3">
                 <label for="address" class="form-label"><b>Адрес</b></label>
                 <input type="text" class="form-control" id="address" name="address"
-                          placeholder="Укажите адрес происшествия">
+                       placeholder="Укажите адрес происшествия" required>
             </div>
-            <div class="mb-3">
-                <label for="type"><b>Тип инцидента</b></label>
-                <select class="form-control" id="type" name="type.id">
-                    <option th:each="type : ${types}" th:value="${type.id}" th:text="${type.name}"></option>
-                </select>
+            <div class="form-row">
+                <div class="col-auto">
+                    <div class="form-group" style="max-width: 250px;">
+                        <label for="type"><b>Тип инцидента</b></label>
+                        <select class="form-control" id="type" name="type.id" required>
+                            <option th:each="type : ${types}" th:value="${type.id}" th:text="${type.name}"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="form-group" style="max-width: 250px;">
+                        <label for="rule"><b>Статьи</b></label>
+                        <select class="form-control" size="3" id="rule" name="rulesId" multiple required>
+                            <option th:each="rule : ${rules}"
+                                    th:value="${rule.id}" th:text="${rule.name}"></option>
+                        </select>
+                    </div>
+                </div>
             </div>
             <div class="mb-3 row">
                 <div class="col-6"></div>
                 <div class="col-6">
                     <div class="row">
-                        <div class="col-6"><a class="btn btn-outline-info w-100" th:href="@{/accidents}">Отмена</a></div>
+                        <div class="col-6"><a class="btn btn-outline-info w-100" th:href="@{/accidents}">Отмена</a>
+                        </div>
                         <div class="col-6">
                             <button class="btn btn-outline-success w-100" type="submit">Сохранить</button>
                         </div>

@@ -6,6 +6,9 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.EqualsAndHashCode.Include;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,4 +21,5 @@ public class Accident {
     @Include
     private String address;
     private AccidentType type;
+    private Set<Rule> rules = new HashSet<>();
 }
