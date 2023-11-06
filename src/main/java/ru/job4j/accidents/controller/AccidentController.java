@@ -43,8 +43,7 @@ public class AccidentController {
      */
     @PostMapping("/create")
     public String create(@ModelAttribute Accident accident, @RequestParam List<Integer> rulesId) {
-        accident.getRules().addAll(ruleService.findAllById(rulesId));
-        accidentService.save(accident);
+        accidentService.save(accident, rulesId);
         return "redirect:/accidents";
     }
 
@@ -69,8 +68,7 @@ public class AccidentController {
      */
     @PostMapping("/update")
     public String update(@ModelAttribute Accident accident, Model model, @RequestParam List<Integer> rulesId) {
-        accident.getRules().addAll(ruleService.findAllById(rulesId));
-        var isUpdated = accidentService.update(accident);
+        var isUpdated = accidentService.update(accident, rulesId);
         if (!isUpdated) {
             model.addAttribute("message", "Инцидент с указанным идентификатором не найден");
             return "errors/404";
