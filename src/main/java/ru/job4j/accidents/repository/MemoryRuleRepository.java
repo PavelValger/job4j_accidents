@@ -4,12 +4,11 @@ import org.springframework.stereotype.Repository;
 import ru.job4j.accidents.model.Rule;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
 public class MemoryRuleRepository implements RuleRepository {
-    private final Map<Integer, Rule> types = new HashMap<>();
+    private final ConcurrentHashMap<Integer, Rule> types = new ConcurrentHashMap<>();
 
     public MemoryRuleRepository() {
         types.put(1, new Rule(1, "Статья 1"));

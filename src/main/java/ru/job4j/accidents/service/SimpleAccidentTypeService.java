@@ -16,4 +16,9 @@ public class SimpleAccidentTypeService implements AccidentTypeService {
     public Collection<AccidentType> findAll() {
         return accidentTypeRepository.findAll();
     }
+
+    @Override
+    public AccidentType findById(int accidentTypeId) {
+        return accidentTypeRepository.findById(accidentTypeId);
+    }
 }

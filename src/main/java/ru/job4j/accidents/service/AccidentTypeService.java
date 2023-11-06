@@ -7,4 +7,6 @@ import java.util.Collection;
 public interface AccidentTypeService {
 
     Collection<AccidentType> findAll();
+
+    AccidentType findById(int accidentTypeId);
 }

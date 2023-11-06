@@ -4,12 +4,11 @@ import org.springframework.stereotype.Repository;
 import ru.job4j.accidents.model.AccidentType;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 @Repository
 public class MemoryAccidentTypeRepository implements AccidentTypeRepository {
-    private final Map<Integer, AccidentType> types = new HashMap<>();
+    private final ConcurrentHashMap<Integer, AccidentType> types = new ConcurrentHashMap<>();
 
     public MemoryAccidentTypeRepository() {
         types.put(1, new AccidentType(1, "Две машины"));
@@ -20,5 +19,10 @@ public class MemoryAccidentTypeRepository implements AccidentTypeRepository {
     @Override
     public Collection<AccidentType> findAll() {
         return types.values();
+    }
+
+    @Override
+    public AccidentType findById(int accidentTypeId) {
+        return types.get(accidentTypeId);
     }
 }
