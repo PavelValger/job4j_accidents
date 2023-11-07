@@ -1,0 +1,3 @@
+insert into accidents(name, text, address, type_id) values('Столкновение', 'Subaru не уступил дорогу Lancer', 'Высоцкого 5', 1);
+insert into accidents(name, text, address, type_id) values('Не пропустил пешехода', 'Lada совершил наезд на мужчину', 'Армейская 22', 2);
+insert into accidents(name, text, address, type_id) values('Сбил велосипедиста', 'Водитель не заметил велосипедиста', 'Восточная 82', 3);
