@@ -10,15 +10,15 @@ import java.util.Collection;
 @Service
 @RequiredArgsConstructor
 public class SimpleAccidentTypeService implements AccidentTypeService {
-    private final AccidentTypeRepository jdbcAccidentTypeRepository;
+    private final AccidentTypeRepository hibernateAccidentTypeRepository;
 
     @Override
     public Collection<AccidentType> findAll() {
-        return jdbcAccidentTypeRepository.findAll();
+        return hibernateAccidentTypeRepository.findAll();
     }
 
     @Override
     public AccidentType findById(int accidentTypeId) {
-        return jdbcAccidentTypeRepository.findById(accidentTypeId);
+        return hibernateAccidentTypeRepository.findById(accidentTypeId);
     }
 }
