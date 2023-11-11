@@ -3,22 +3,22 @@ package ru.job4j.accidents.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.job4j.accidents.model.AccidentType;
-import ru.job4j.accidents.repository.AccidentTypeRepository;
+import ru.job4j.accidents.repository.DataAccidentTypeRepository;
 
 import java.util.Collection;
 
 @Service
 @RequiredArgsConstructor
 public class SimpleAccidentTypeService implements AccidentTypeService {
-    private final AccidentTypeRepository hibernateAccidentTypeRepository;
+    private final DataAccidentTypeRepository dataAccidentTypeRepository;
 
     @Override
     public Collection<AccidentType> findAll() {
-        return hibernateAccidentTypeRepository.findAll();
+        return (Collection<AccidentType>) dataAccidentTypeRepository.findAll();
     }
 
     @Override
     public AccidentType findById(int accidentTypeId) {
-        return hibernateAccidentTypeRepository.findById(accidentTypeId);
+        return dataAccidentTypeRepository.findById(accidentTypeId).get();
     }
 }

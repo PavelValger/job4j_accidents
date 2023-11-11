@@ -3,22 +3,22 @@ package ru.job4j.accidents.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.job4j.accidents.model.Rule;
-import ru.job4j.accidents.repository.RuleRepository;
+import ru.job4j.accidents.repository.DataRuleRepository;
 
 import java.util.Collection;
 
 @Service
 @RequiredArgsConstructor
 public class SimpleRuleService implements RuleService {
-    private final RuleRepository hibernateRuleRepository;
+    private final DataRuleRepository dataRuleRepository;
 
     @Override
     public Collection<Rule> findAll() {
-        return hibernateRuleRepository.findAll();
+        return (Collection<Rule>) dataRuleRepository.findAll();
     }
 
     @Override
     public Collection<Rule> findAllById(Collection<Integer> rulesId) {
-        return hibernateRuleRepository.findAllById(rulesId);
+        return (Collection<Rule>) dataRuleRepository.findAllById(rulesId);
     }
 }
