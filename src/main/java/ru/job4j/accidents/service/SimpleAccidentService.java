@@ -38,7 +38,7 @@ public class SimpleAccidentService implements AccidentService {
 
     @Override
     public Collection<Accident> findAll() {
-        return (Collection<Accident>) dataAccidentRepository.findAll();
+        return dataAccidentRepository.findAll();
     }
 
     @Override

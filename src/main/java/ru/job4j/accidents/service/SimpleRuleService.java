@@ -14,11 +14,11 @@ public class SimpleRuleService implements RuleService {
 
     @Override
     public Collection<Rule> findAll() {
-        return (Collection<Rule>) dataRuleRepository.findAll();
+        return dataRuleRepository.findAll();
     }
 
     @Override
     public Collection<Rule> findAllById(Collection<Integer> rulesId) {
-        return (Collection<Rule>) dataRuleRepository.findAllById(rulesId);
+        return dataRuleRepository.findAllById(rulesId);
     }
 }
