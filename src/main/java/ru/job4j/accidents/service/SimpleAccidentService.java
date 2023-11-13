@@ -43,6 +43,6 @@ public class SimpleAccidentService implements AccidentService {
 
     @Override
     public Optional<Accident> findById(int id) {
-        return Optional.ofNullable(dataAccidentRepository.findByIdFetchRules(id));
+        return dataAccidentRepository.findById(id);
     }
 }
